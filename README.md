@@ -10,7 +10,8 @@ Projeto de Sistemas Operacionais realizado em grupo no Instituto Militar de Enge
 - Roosevelth Soares
 - Léo Victor Cruz Vasconcelos
 
-### Descrição: Fazer um programa que simule o algoritmo de
+## DESCRIÇÃO
+Fazer um programa que simule o algoritmo de
 escalonamento de múltiplas filas (com realimentação) com as
 seguintes características:
 – São utilizadas 2 filas de processos prontos (Q0 e Q1).
@@ -25,7 +26,7 @@ por tempo.
 – Um processo passa da fila Q1 para a fila Q0 quando este processo fica
 30mseg na fila Q1 sem ser escalonado.
 
-### Além disso, considere que:
+Além disso, considere que:
 – Todos os surtos de CPU de um mesmo processo têm a
 mesma duração (dada como entrada);
 – Só existe um dispositivo de E/S no sistema e este só
