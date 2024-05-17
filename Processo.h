@@ -7,15 +7,10 @@ class Processo {
     private:
         std::string nome;
         int burstDeCpu, quantidadeDeBursts, segundoDeEntrada;
-        int tempoDeExecucao;
-        int status;
 
     public:
         Processo(std::string nome, int burstDeCpu, int quantidadeDeBursts, int segundoDeEntrada);
         Processo(const Processo& p);
-
-        void incrementarTempoDeExecucao();
-
 };
 
 #endif

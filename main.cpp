@@ -2,6 +2,8 @@
 #include <vector>
 #include "Processo.cpp"
 
+#define QUANTUM_RR 10
+
 int main(int argc, char *argv[]) {
     // Receber processos
     
@@ -36,6 +38,23 @@ int main(int argc, char *argv[]) {
         processos.push_back(Processo(nome,burstDeCpu,quantidadeDeBursts,segundoDeEntrada));
     }
     
+
+    std::vector<Processo> RR;
+    std::vector<Processo> FCFS;
+    std::vector<Processo> IO;
+    
+    int tempoTotal = 0;
+    int processosConsumados = 0;
+    bool jaExec;
+
+    while(1) {
+        //Magica
+
+        tempoTotal++;
+    }
+
+
+
     return 0;
 
 }
