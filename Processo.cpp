@@ -5,3 +5,7 @@ nome(nome), burstDeCpu(burstDeCpu), quantidadeDeBursts(quantidadeDeBursts), segu
 
 Processo::Processo(const Processo& p):
 nome(p.nome), burstDeCpu(p.burstDeCpu), quantidadeDeBursts(p.quantidadeDeBursts), segundoDeEntrada(segundoDeEntrada) {}
+
+int Processo::pegarSegundoDeEntrada() {
+    return this->segundoDeEntrada;
+}

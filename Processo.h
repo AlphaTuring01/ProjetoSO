@@ -11,6 +11,7 @@ class Processo {
     public:
         Processo(std::string nome, int burstDeCpu, int quantidadeDeBursts, int segundoDeEntrada);
         Processo(const Processo& p);
+        int pegarSegundoDeEntrada();
 };
 
 #endif
