@@ -72,24 +72,47 @@ int main(int argc, char *argv[]) {
         if(!RR.empty()) {
             if(RR[0].acabou()) {
                 // Sai da fila e não vai para nenhuma
+                RR.erase(RR.begin());
             } else if(RR[0].acabouBurst()) {
-                // Sai da Fila e vai para IO
+                // Sai da Fila
+                Processo pCopia = RR[0];
+                RR.erase(RR.begin());
                 // Zera o tempo de Burst
+                pCopia.zerarTempoDeExecLocal();
                 // Zera tempo de Status
+                pCopia.zerarTempoDeStatus();
+                // Vai para IO
+                IO.push_back(pCopia);
             } else if(RR[0].pegarTempoDeStatus() == QUANTUM_RR) {
                 // Vai para fila FCFS
+                Processo pCopia = RR[0];
+                RR.erase(RR.begin());
                 // Zera tempo de Status
+                pCopia.zerarTempoDeStatus();
+                FCFS.push_back(pCopia);
             }
         } else if(!FCFS.empty()) {
             if(FCFS[0].acabou()) {
                 // Sai da fila e não vai para nenhuma
+                FCFS.erase(FCFS.begin());
             } else if(FCFS[0].acabouBurst()) {
                 // Sai da fila e vai para IO
+                Processo pCopia = FCFS[0];
+                FCFS.erase(FCFS.begin());
                 // Zera tempo de Status
+                pCopia.zerarTempoDeExecLocal();
+                pCopia.zerarTempoDeStatus();
             }
 
             // Mover todos com tempo de Status == 30 para RR
-            // Zerar Tempo de Status 
+            // Zerar Tempo de Status
+            // É possivel 2 processos chegarem em Q1 ao mesmo tempo?? Do jeito que o problema é descrito, NON.
+
+            std::vector<Processo>::iterator possivelProcesso = IO.begin();
+            while(possivelProcesso->pegarTempoDeStatus() == 30 || possivelProcesso == IO.end()) possivelProcesso++;
+            if(possivelProcesso == IO.end()) {
+                // Move de IO para RR
+            }
         }
 
         // IO sempre incrementa e quando chega em TIME_IO volta para RR

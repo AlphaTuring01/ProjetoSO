@@ -9,3 +9,32 @@ nome(p.nome), burstDeCpu(p.burstDeCpu), quantidadeDeBursts(p.quantidadeDeBursts)
 int Processo::pegarSegundoDeEntrada() {
     return this->segundoDeEntrada;
 }
+
+bool Processo::acabou() {
+    return this->burstDeCpu * this->quantidadeDeBursts >= this->tempoDeExecGlobal;
+}
+
+bool Processo::acabouBurst() {
+    return this-> burstDeCpu >= this->tempoDeExecLocal;
+}
+
+int Processo::pegarTempoDeStatus() {
+    return this->tempoDeStatus;
+}
+
+void Processo::zerarTempoDeExecLocal() {
+    this->tempoDeExecLocal = 0;
+}
+
+void Processo::zerarTempoDeStatus() {
+    this->tempoDeStatus = 0;
+}
+
+void Processo::incrementarTempoDeExec() {
+    this->tempoDeExecGlobal++;
+    this->tempoDeExecLocal++;
+}
+
+void Processo::incrementarTempoDeStatus() {
+    this->tempoDeStatus++;
+}
