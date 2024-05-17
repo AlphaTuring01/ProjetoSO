@@ -11,3 +11,7 @@ nome(p.nome), burstDeCpu(p.burstDeCpu), quantidadeDeBursts(p.quantidadeDeBursts)
     tempoDeExecucao = 0;
     status = 0;
 }
+
+void Processo::incrementarTempoDeExecucao() {
+    tempoDeExecucao++;
+}
