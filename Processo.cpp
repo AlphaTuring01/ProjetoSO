@@ -4,21 +4,21 @@ Processo::Processo(std::string nome, int burstDeCpu, int quantidadeDeBursts, int
 nome(nome), burstDeCpu(burstDeCpu), quantidadeDeBursts(quantidadeDeBursts), segundoDeEntrada(segundoDeEntrada) {}
 
 Processo::Processo(const Processo& p):
-nome(p.nome), burstDeCpu(p.burstDeCpu), quantidadeDeBursts(p.quantidadeDeBursts), segundoDeEntrada(segundoDeEntrada) {}
+nome(p.nome), burstDeCpu(p.burstDeCpu), quantidadeDeBursts(p.quantidadeDeBursts), segundoDeEntrada(p.segundoDeEntrada) {}
 
-int Processo::pegarSegundoDeEntrada() {
+int Processo::pegarSegundoDeEntrada() const {
     return this->segundoDeEntrada;
 }
 
 bool Processo::acabou() {
-    return this->burstDeCpu * this->quantidadeDeBursts >= this->tempoDeExecGlobal;
+    return (this->burstDeCpu * this->quantidadeDeBursts <= this->tempoDeExecGlobal);
 }
 
 bool Processo::acabouBurst() {
-    return this-> burstDeCpu >= this->tempoDeExecLocal;
+    return (this-> burstDeCpu <= this->tempoDeExecLocal);
 }
 
-int Processo::pegarTempoDeStatus() {
+int Processo::pegarTempoDeStatus() const {
     return this->tempoDeStatus;
 }
 
@@ -37,4 +37,12 @@ void Processo::incrementarTempoDeExec() {
 
 void Processo::incrementarTempoDeStatus() {
     this->tempoDeStatus++;
+}
+
+std::string Processo::pegarNome() const {
+    return this->nome;
+}
+
+bool Processo::operator<(const Processo &p) const {
+    return this->segundoDeEntrada > p.segundoDeEntrada;
 }

@@ -13,14 +13,17 @@ class Processo {
     public:
         Processo(std::string nome, int burstDeCpu, int quantidadeDeBursts, int segundoDeEntrada);
         Processo(const Processo& p);
-        int pegarSegundoDeEntrada();
+        int pegarSegundoDeEntrada() const;
         bool acabou();
         bool acabouBurst();
-        int pegarTempoDeStatus();
+        int pegarTempoDeStatus() const;
         void zerarTempoDeExecLocal();
         void zerarTempoDeStatus();
         void incrementarTempoDeExec();
         void incrementarTempoDeStatus();
+        std::string pegarNome() const;
+
+        bool operator<(const Processo &p) const;
 };
 
 #endif
