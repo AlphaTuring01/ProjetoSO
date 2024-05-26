@@ -9,12 +9,17 @@ class Dispatcher {
     private:
         Escalonador* scheduler;
         int quantum;
-        Processo* process;
+        Processo process;
 
     public:
         Dispatcher(int quantum, Escalonador* scheduler);
-        Dispatcher& add_process(Processo p);
+
+        Dispatcher& set_process(Processo p);
+        
+        void stop(int interrupt_code);
+
         void run();
+        void terminate();
 };
 
 #endif
