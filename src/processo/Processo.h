@@ -8,6 +8,7 @@ class Processo {
     private:
         std::string nome;
         int cpu_burst, num_bursts, entry_time, id;
+        bool finished = false;
 
     public:
         friend std::ostream& operator<<(std::ostream& os, const Processo& p);
@@ -21,6 +22,8 @@ class Processo {
         int get_num_bursts();
         std::string get_nome();
         int get_id();
+
+        bool is_finished();
         
 };
 

@@ -17,9 +17,9 @@ class Escalonador{
     std::queue<Processo> get_process_queue();
     int get_quantum();
     int set_quantum(int quantum);
-    
 
-    bool add_process(Processo p);
+
+    Escalonador& add_process(Processo p);
     void run();
 
 };
