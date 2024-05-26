@@ -18,7 +18,7 @@ seguintes características:
 - São utilizadas 2 filas de processos prontos (Q0 e Q1).
 - Os processos iniciam na fila Q0.
 - A fila Q0 usa o escalonamento Round-Robin com quantum de 10mseg.
-- A fila Q2 usa o escalonamento FCFS.
+- A fila Q1 usa o escalonamento FCFS.
 - O escalonamento entre as filas é por prioridade com preempção. Q0 é a fila com maior prioridade e Q1 tem prioridade baixa.
 - Um processo passa da fila Q0 para a fila Q1 quando sofre preempção por tempo.
 - Um processo passa da fila Q1 para a fila Q0 quando este processo fica 30mseg na fila Q1 sem ser escalonado.
@@ -36,3 +36,7 @@ da fila Q0 no instante 0:
 
 - O programa deve gerar como saída uma descrição
 do diagrama de Gantt resultante.
+
+## PROJETO DA SOLUÇÃO
+
+A solução envolve a criação de 4 classes: Clock, Processo, Dispatcher e Escalonador. A classe Escalonador é responsável por escalar os processos, enquanto a 

@@ -22,8 +22,8 @@ class Escalonador{
 
 
     Escalonador& add_process(Processo p);
-    void schedule();
     void next_process(int interrupt_code);
+    void run();
 
 };
 
