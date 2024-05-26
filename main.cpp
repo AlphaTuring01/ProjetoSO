@@ -1,91 +1,156 @@
 #include <iostream>
-#include <vector>
 #include <queue>
-#include "Processo.cpp"
+#include <vector>
 
-//DEBUG
-#define gay(x) std::cout<<x<<std::endl
+#define QUANTUM  10
+#define IOTIME   20
+#define FCFSTIME 30
 
-#define QUANTUM_RR 10
+using namespace std;
 
-int main(int argc, char *argv[]) {
-    // Receber processos
-    
-    std::priority_queue<Processo> processos;
+class Processo {
+    private:
+        int id, entrada, burst, ios;
+        int tempoBurst, tempoExec, tempoFCFS;
 
-    for(int index=1;index<argc;index++) {
-        std::string stringProcesso = std::string(argv[index]);
-        if(stringProcesso.front() != '%' || stringProcesso.back() != '%') {
-            std::cout << "Sintaxe do processo não entendida (Chaves)" << std::endl;
-            exit(1);
-        } 
-        
-        stringProcesso.erase(stringProcesso.begin());
-        stringProcesso.pop_back();
-        
-        std::size_t posicaoDaPrimeiraVirgula = stringProcesso.find_first_of(",");
-        std::size_t posicaoDaSegundaVirgula  = stringProcesso.find(",", posicaoDaPrimeiraVirgula+1);
-        std::size_t posicaoDaUltimaVirgula   = stringProcesso.find_last_of(",");
-
-        if(posicaoDaPrimeiraVirgula == std::string::npos || 
-           posicaoDaUltimaVirgula == std::string::npos   ||
-           posicaoDaSegundaVirgula == posicaoDaUltimaVirgula  ) {
-            std::cout << "Sintaxe do processo não entendida (Virgulas)" << std::endl;
-            exit(1);
+    public:
+        Processo(int id, int entrada, int burst, int ios):
+        id(id), entrada(entrada), burst(burst), ios(ios),
+        tempoBurst(0), tempoExec(0), tempoFCFS(0) {
+            if(id <= 0) throw runtime_error("ID não pode ser 0 ou menor!!");
         }
 
-        std::string nome       = stringProcesso.substr(0,posicaoDaPrimeiraVirgula);
-        int burstDeCpu         = std::stoi(stringProcesso.substr(posicaoDaPrimeiraVirgula+1, posicaoDaSegundaVirgula - posicaoDaPrimeiraVirgula - 1));
-        int quantidadeDeBursts = std::stoi(stringProcesso.substr(posicaoDaSegundaVirgula+1, posicaoDaUltimaVirgula - posicaoDaSegundaVirgula - 1));
-        int segundoDeEntrada   = std::stoi(stringProcesso.substr(posicaoDaUltimaVirgula+1, stringProcesso.size() - posicaoDaUltimaVirgula - 1));
-
-        processos.push(Processo(nome,burstDeCpu,quantidadeDeBursts,segundoDeEntrada));
-    }
-    
-
-    std::vector<Processo> RR;
-    std::vector<Processo> FCFS;
-    std::vector<Processo> IO;
-    
-    int tempoTotal = -1;
-    bool FCFSexec = false;
-    std::string pNome = "NENHUM";
-    
-    while(!(RR.empty() && FCFS.empty() && IO.empty() && processos.empty())) {
-        tempoTotal++;
-        FCFSexec = false;
-        pNome = "NENHUM";
-
-        if(!processos.empty()) {
-            while(!processos.empty() && tempoTotal == processos.top().pegarSegundoDeEntrada()) {
-                RR.push_back(processos.top());
-                processos.pop();
-            }
+        Processo(const Processo &p):
+        id(p.id), entrada(p.entrada), burst(p.burst), ios(p.ios),
+        tempoBurst(p.tempoBurst), tempoExec(p.tempoExec), tempoFCFS(p.tempoFCFS) {
+            if(id <= 0) throw runtime_error("ID não pode ser 0 ou menor!!");
         }
 
+        int pegarID() { return id; }
+        int pegarEntrada() const { return entrada; }
+        int pegarBurst() {return burst; }
+        int pegarIOs() { return ios; }
+
+        void zerarTempoBurst() { tempoBurst = 0; }
+        void zerarTempoFCFS() { tempoFCFS = 0; }
+
+        void incremetarTempoExec() { tempoBurst++; tempoExec++; }
+        void incremetarTempoFCFS() { tempoFCFS++; }
+
+        int pegarTempoFCFS() { return tempoFCFS; }
+
+        bool acabou() {
+            return tempoExec >= (ios+1)*burst;
+        }
+
+        bool burstAcabou() {
+            return tempoBurst >= burst;
+        }
+
+        bool operator<(const Processo &p) const {
+            return p.entrada < entrada;
+        }
+};
+
+ostream &operator<<(ostream &os, Processo p) {
+    return os << "(ID:" << p.pegarID() << ",ENT:" << p.pegarEntrada() << ",BUR:" << p.pegarBurst() << ",QIO:" << p.pegarIOs() << ")";
+}
+
+void operator>>(queue<Processo> &F1, queue<Processo> &F2) {
+    Processo pCopia = F1.front();
+    F1.pop();
+    F2.push(pCopia);
+}
+
+void operator>>(priority_queue<Processo> &F1, queue<Processo> &F2) {
+    Processo pCopia = F1.top();
+    F1.pop();
+    F2.push(pCopia);
+}
+
+int main() {
+    priority_queue<Processo> Entradas;
+    queue<Processo> RR;
+    queue<Processo> FCFS;
+    queue<Processo> IO;
+
+    vector<int> hist;
+
+    int RRtimer = 0;
+    int IOtimer = -1;
+    int runtime = -1;
+    bool execFCFS;
+    bool nowFCFS;
+    
+    Entradas.push(Processo(1,0,10,1));
+    Entradas.push(Processo(2,3,5,2));
+    
+    while(!Entradas.empty() || !RR.empty() || !FCFS.empty() || !IO.empty()) {
+        
+        runtime++;
+
+        execFCFS = false;
+        nowFCFS  = false;
+
+        while(!Entradas.empty() && Entradas.top().pegarEntrada() == runtime) Entradas >> RR;
+        
         if(!RR.empty()) {
-            pNome = RR[0].pegarNome();
-            RR[0].incrementarTempoDeExec();
-            RR[0].incrementarTempoDeStatus();
+            hist.push_back(RR.front().pegarID());
+            RR.front().incremetarTempoExec();
+            RRtimer++;
+            if(RR.front().acabou()) {
+                RRtimer = 0;
+                RR.pop();
+            } else if(RR.front().burstAcabou()) {
+                RRtimer = 0;
+                RR.front().zerarTempoBurst();
+                RR >> IO;
+            } else if(RRtimer == QUANTUM) {
+                RRtimer = 0;
+                RR >> FCFS;
+                nowFCFS = true;
+            }
+        } else if(!FCFS.empty()) {
+            hist.push_back(FCFS.front().pegarID());
+            FCFS.front().incremetarTempoExec();
+            execFCFS = true;
+            if(FCFS.front().acabou()) {
+                FCFS.pop();
+            } else if(FCFS.front().burstAcabou()) {
+                FCFS.front().zerarTempoBurst();
+                FCFS >> IO;
+            }
+        } else hist.push_back(0);
 
-            if(RR[0].acabou()) {
-                RR.erase(RR.begin());
-            } else if(RR[0].acabouBurst()) {
-                // Algo aqui
-            } else if(RR[0].pegarTempoDeStatus() == QUANTUM_RR) {
-                // Algo aqui
+        if(!FCFS.empty()) {
+            queue<Processo> incFCFS;
+            if(!execFCFS) FCFS.front().incremetarTempoFCFS();
+            FCFS >> incFCFS;
+            while(FCFS.size() > 1) {
+                FCFS.front().incremetarTempoFCFS();
+                FCFS >> incFCFS;
+            }
+            if(!FCFS.empty() && !nowFCFS) {
+                FCFS.front().incremetarTempoFCFS();
+                FCFS >> incFCFS;
+            }
+            while(!incFCFS.empty()) incFCFS >> FCFS;
+            if(FCFS.front().pegarTempoFCFS() == FCFSTIME) {
+                FCFS.front().zerarTempoFCFS();
+                FCFS >> RR;
             }
         }
         
-        std::cout << pNome << " " << tempoTotal << std::endl;
-
-        if(tempoTotal > 40) break;
-
+        if(!IO.empty()) {
+            IOtimer++;
+            if(IOtimer == IOTIME) {
+                IOtimer = -1;
+                IO >> RR;
+            }
+        }
     }
-
-    // Processo de Leitura do Arquivo/Variavel/Etc e Desenho do diagrama de Gantt
-
-
+    
+    for(int i: hist) cout << i << " " << endl;
+    
     return 0;
-
 }
