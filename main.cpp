@@ -48,7 +48,9 @@ class Processo {
         }
 
         bool operator<(const Processo &p) const {
-            return p.entrada < entrada;
+            if(p.entrada < entrada) return true;
+            else if(p.entrada == entrada) return p.id < id;
+            else return false;
         }
 };
 
@@ -82,8 +84,10 @@ int main() {
     bool execFCFS;
     bool nowFCFS;
     
-    Entradas.push(Processo(1,0,10,1));
-    Entradas.push(Processo(2,3,5,2));
+    Entradas.push(Processo(1,0,8,3));
+    Entradas.push(Processo(2,0,40,1));
+    Entradas.push(Processo(3,0,10,2));
+    Entradas.push(Processo(4,0,30,1));
     
     while(!Entradas.empty() || !RR.empty() || !FCFS.empty() || !IO.empty()) {
         
@@ -108,7 +112,6 @@ int main() {
             } else if(RRtimer == QUANTUM) {
                 RRtimer = 0;
                 RR >> FCFS;
-                nowFCFS = true;
             }
         } else if(!FCFS.empty()) {
             hist.push_back(FCFS.front().pegarID());
@@ -124,7 +127,10 @@ int main() {
 
         if(!FCFS.empty()) {
             queue<Processo> incFCFS;
+            
             if(!execFCFS) FCFS.front().incremetarTempoFCFS();
+            else FCFS.front().zerarTempoFCFS();
+            
             FCFS >> incFCFS;
             while(FCFS.size() > 1) {
                 FCFS.front().incremetarTempoFCFS();
@@ -146,11 +152,17 @@ int main() {
             if(IOtimer == IOTIME) {
                 IOtimer = -1;
                 IO >> RR;
+                if(!IO.empty()) IOtimer++;
             }
         }
     }
     
-    for(int i: hist) cout << i << " " << endl;
-    
+    int nower = -1;
+    for(int i=0;i<hist.size();i++) {
+        if(nower != hist[i])
+            cout << i << " " << (nower = hist[i]) - 1 << endl;
+    }
+    cout << hist.size() << " FIM" << endl;
+
     return 0;
 }
