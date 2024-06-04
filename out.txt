@@ -1455,26 +1455,27 @@ time: 207
 ==================================
 
 
-Most relevant timestamps: 
-time: 0 process in CPU: P0
-time: 8 process in CPU: P1
-time: 18 process in CPU: P2
-time: 28 process in CPU: P3
-time: 38 process in CPU: P0
-time: 46 process in CPU: P1
-time: 48 process in CPU: P2
-time: 58 process in CPU: P1
-time: 68 process in CPU: P3
-time: 78 process in CPU: P0
-time: 86 process in CPU: P1
-time: 88 process in CPU: P2
-time: 98 process in CPU: P1
-time: 108 process in CPU: P3
-time: 118 process in CPU: P0
-time: 126 process in CPU: P1
-time: 132 process in CPU: None (All in IO)
-time: 138 process in CPU: P3
-time: 158 process in CPU: P1
-time: 168 process in CPU: P3
-time: 178 process in CPU: P1
+Summary: 
+
+beginning at timestamp 0, process in CPU: P0
+beginning at timestamp 8, process in CPU: P1
+beginning at timestamp 18, process in CPU: P2
+beginning at timestamp 28, process in CPU: P3
+beginning at timestamp 38, process in CPU: P0
+beginning at timestamp 46, process in CPU: P1
+beginning at timestamp 48, process in CPU: P2
+beginning at timestamp 58, process in CPU: P1
+beginning at timestamp 68, process in CPU: P3
+beginning at timestamp 78, process in CPU: P0
+beginning at timestamp 86, process in CPU: P1
+beginning at timestamp 88, process in CPU: P2
+beginning at timestamp 98, process in CPU: P1
+beginning at timestamp 108, process in CPU: P3
+beginning at timestamp 118, process in CPU: P0
+beginning at timestamp 126, process in CPU: P1
+beginning at timestamp 132, process in CPU: None (All in IO)
+beginning at timestamp 138, process in CPU: P3
+beginning at timestamp 158, process in CPU: P1
+beginning at timestamp 168, process in CPU: P3
+beginning at timestamp 178, process in CPU: P1
 Processes finished at time 208

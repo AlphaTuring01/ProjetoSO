@@ -184,7 +184,7 @@ int main() {
     cout << "\nSummary: \n\n";
     for(int i=0;i<hist.size();i++) {
         if(nower != hist[i])
-            cout << "until timestamp " << i << ", process in CPU: " << (((nower = hist[i]) - 1 >= 0) ? (string("P") + to_string(nower - 1)) : "None (All in IO)") << endl;
+            cout << "beginning at timestamp " << i << ", process in CPU: " << (((nower = hist[i]) - 1 >= 0) ? (string("P") + to_string(nower - 1)) : "None (All in IO)") << endl;
     }
     cout << "Processes finished at time " << hist.size() << endl;
 
