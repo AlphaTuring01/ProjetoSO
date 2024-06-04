@@ -88,11 +88,15 @@ int main() {
     Entradas.push(Processo(2,0,40,1));
     Entradas.push(Processo(3,0,10,2));
     Entradas.push(Processo(4,0,30,1));
+
+    // Entradas.push(Processo(1,0,100,1));
+    // Entradas.push(Processo(2,0,100,1));
+
     
     while(!Entradas.empty() || !RR.empty() || !FCFS.empty() || !IO.empty()) {
         
         runtime++;
-
+        
         execFCFS = false;
         nowFCFS  = false;
 
@@ -140,10 +144,12 @@ int main() {
                 FCFS.front().incremetarTempoFCFS();
                 FCFS >> incFCFS;
             }
-            while(!incFCFS.empty()) incFCFS >> FCFS;
-            if(FCFS.front().pegarTempoFCFS() == FCFSTIME) {
-                FCFS.front().zerarTempoFCFS();
-                FCFS >> RR;
+            
+            while(!incFCFS.empty()) {
+                if(incFCFS.front().pegarTempoFCFS() == FCFSTIME + 1) {
+                    incFCFS.front().zerarTempoFCFS();
+                    incFCFS >> RR;
+                } else incFCFS >> FCFS;
             }
         }
         
