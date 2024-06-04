@@ -181,10 +181,10 @@ int main() {
     
     int nower = -1;
 
-    cout << "\nMost relevant timestamps: \n";
+    cout << "\nSummary: \n\n";
     for(int i=0;i<hist.size();i++) {
         if(nower != hist[i])
-            cout << "time: " << i << " process in CPU: " << (((nower = hist[i]) - 1 >= 0) ? (string("P") + to_string(nower - 1)) : "None (All in IO)") << endl;
+            cout << "until timestamp " << i << ", process in CPU: " << (((nower = hist[i]) - 1 >= 0) ? (string("P") + to_string(nower - 1)) : "None (All in IO)") << endl;
     }
     cout << "Processes finished at time " << hist.size() << endl;
 
