@@ -84,14 +84,15 @@ int main() {
     bool execFCFS;
     bool nowFCFS;
     
-    Entradas.push(Processo(1,0,8,3));
-    Entradas.push(Processo(2,0,40,1));
-    Entradas.push(Processo(3,0,10,2));
-    Entradas.push(Processo(4,0,30,1));
-
-    // Entradas.push(Processo(1,0,100,1));
-    // Entradas.push(Processo(2,0,100,1));
-
+    int qnt_processos;
+    cout << "Quantidade de Processos: ";
+    cin >> qnt_processos;
+    int mseg_ent, burst, ios;
+    cout << "Digite agora (MSEG EM QUE ENTRA, BURST DE CPU, QNT DE IOS):" << endl;
+    for(int i=1;i<=qnt_processos;i++) {
+        cin >>  mseg_ent >> burst >> ios;
+        Entradas.push(Processo(i,mseg_ent,burst,ios));
+    }
     
     while(!Entradas.empty() || !RR.empty() || !FCFS.empty() || !IO.empty()) {
         
