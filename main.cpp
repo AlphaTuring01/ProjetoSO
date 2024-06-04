@@ -55,7 +55,7 @@ class Processo {
 };
 
 ostream &operator<<(ostream &os, Processo p) {
-    return os << "(ID:" << p.pegarID() << ",ENT:" << p.pegarEntrada() << ",BUR:" << p.pegarBurst() << ",QIO:" << p.pegarIOs() << ")";
+    return os << p.pegarID();
 }
 
 void operator>>(queue<Processo> &F1, queue<Processo> &F2) {
@@ -68,6 +68,14 @@ void operator>>(priority_queue<Processo> &F1, queue<Processo> &F2) {
     Processo pCopia = F1.top();
     F1.pop();
     F2.push(pCopia);
+}
+
+void print_queue(queue<Processo> q) {
+    while(!q.empty()) {
+        cout << q.front().pegarID() << " ";
+        q.pop();
+    }
+    cout << endl;
 }
 
 int main() {
@@ -161,6 +169,14 @@ int main() {
                 if(!IO.empty()) IOtimer++;
             }
         }
+
+        cout << "time: " << runtime << endl << "- RR: ";
+        print_queue(RR);
+        cout << "- FCFS: ";
+        print_queue(FCFS);
+        cout << "- IO: ";
+        print_queue(IO);
+        cout << "\n" << "==================================" << "\n" << endl; 
     }
     
     int nower = -1;
