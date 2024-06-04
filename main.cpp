@@ -72,7 +72,7 @@ void operator>>(priority_queue<Processo> &F1, queue<Processo> &F2) {
 
 void print_queue(queue<Processo> q) {
     while(!q.empty()) {
-        cout << q.front().pegarID() << " ";
+        cout << q.front().pegarID() - 1 << " ";
         q.pop();
     }
     cout << endl;
@@ -180,11 +180,13 @@ int main() {
     }
     
     int nower = -1;
+
+    cout << "\nMost relevant timestamps: \n";
     for(int i=0;i<hist.size();i++) {
         if(nower != hist[i])
-            cout << i << " " << (nower = hist[i]) - 1 << endl;
+            cout << "time: " << i << " process in CPU: " << (((nower = hist[i]) - 1 >= 0) ? (string("P") + to_string(nower - 1)) : "None (All in IO)") << endl;
     }
-    cout << hist.size() << " FIM" << endl;
+    cout << "Processes finished at time " << hist.size() << endl;
 
     return 0;
 }
