@@ -1,6 +1,8 @@
 #include <iostream>
 #include <queue>
 #include <vector>
+#include <stdexcept>
+#include <fstream>
 
 #define QUANTUM  10
 #define IOTIME   20
@@ -70,15 +72,20 @@ void operator>>(priority_queue<Processo> &F1, queue<Processo> &F2) {
     F2.push(pCopia);
 }
 
-void print_queue(queue<Processo> q) {
-    while(!q.empty()) {
-        cout << q.front().pegarID() - 1 << " ";
-        q.pop();
-    }
-    cout << endl;
+void log(queue<Processo> q0, queue<Processo> q1, queue<Processo> io, int timestamp, string logfilename) {
+    ofstream log(logfilename, ios::app);
+    log << "timestamp: " << timestamp << "\n";
+    log << "RR: ";
+    while(!q0.empty()) { log << q0.front().pegarID() - 1 << " "; q0.pop(); }
+    log << "\nFCFS: ";
+    while(!q1.empty()) { log << q1.front().pegarID() - 1 << " "; q1.pop(); }
+    log << "\nIO: ";
+    while(!io.empty()) { log << io.front().pegarID() - 1 << " "; io.pop(); }
+    log << "\n========================================\n";
+    log.close();
 }
 
-int main() {
+int main(int argc, char** argv) {
     priority_queue<Processo> Entradas;
     queue<Processo> RR;
     queue<Processo> FCFS;
@@ -92,16 +99,17 @@ int main() {
     bool execFCFS;
     bool nowFCFS;
     
+    if(argc==0) throw runtime_error("Nenhum arquivo de entrada passado!!");
+    ifstream file(argv[1], ios::in);
+    if(!file.is_open()) throw runtime_error("Arquivo não encontrado!!");
     int qnt_processos;
-    cout << "Quantidade de Processos: ";
-    cin >> qnt_processos;
-    int mseg_ent, burst, ios;
-    cout << "Digite agora (MSEG EM QUE ENTRA, BURST DE CPU, QNT DE IOS):" << endl;
+    file >> qnt_processos;
     for(int i=1;i<=qnt_processos;i++) {
-        cin >>  mseg_ent >> burst >> ios;
+        int mseg_ent, burst, ios;
+        file >> mseg_ent >> burst >> ios;
         Entradas.push(Processo(i,mseg_ent,burst,ios));
     }
-    
+
     while(!Entradas.empty() || !RR.empty() || !FCFS.empty() || !IO.empty()) {
         
         runtime++;
@@ -171,13 +179,7 @@ int main() {
             }
         }
 
-        cout << "time: " << runtime << endl << "- RR: ";
-        print_queue(RR);
-        cout << "- FCFS: ";
-        print_queue(FCFS);
-        cout << "- IO: ";
-        print_queue(IO);
-        cout << "\n" << "==================================" << "\n" << endl; 
+        log(RR, FCFS, IO, runtime, "log.txt");
     }
     
     int nower = -1;
