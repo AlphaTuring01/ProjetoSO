@@ -72,16 +72,18 @@ void operator>>(priority_queue<Processo> &F1, queue<Processo> &F2) {
     F2.push(pCopia);
 }
 
-void log(queue<Processo> q0, queue<Processo> q1, queue<Processo> io, int timestamp, string logfilename) {
+void log(queue<Processo> q0, queue<Processo> q1, queue<Processo> io, int timestamp, string logfilename, bool empty) {
     ofstream log(logfilename, ios::app);
-    log << "timestamp: " << timestamp << "\n";
+    if(timestamp == 0)  log << "Lista de Logs:\n\n===================\n\n";
+    log << "timestamp: " << timestamp + 1<< "\n";
     log << "RR: ";
-    while(!q0.empty()) { log << q0.front().pegarID() - 1 << " "; q0.pop(); }
+    while(!q0.empty()) { log << "P" << q0.front().pegarID() - 1 << " "; q0.pop(); }
     log << "\nFCFS: ";
-    while(!q1.empty()) { log << q1.front().pegarID() - 1 << " "; q1.pop(); }
+    while(!q1.empty()) { log << "P" << q1.front().pegarID() - 1 << " "; q1.pop(); }
     log << "\nIO: ";
-    while(!io.empty()) { log << io.front().pegarID() - 1 << " "; io.pop(); }
-    log << "\n\n========================================\n\n";
+    while(!io.empty()) { log << "P" << io.front().pegarID() - 1 << " "; io.pop(); }
+    log << "\n\n===================";
+    if(!empty)log << "\n\n";
     log.close();
 }
 
@@ -101,7 +103,7 @@ int main(int argc, char** argv) {
 
     ofstream logging("log.txt", ios::out);
     logging.close();
-    
+
     if(argc==0) throw runtime_error("Nenhum arquivo de entrada passado!!");
     ifstream file(argv[1], ios::in);
     if(!file.is_open()) throw runtime_error("Arquivo não encontrado!!");
@@ -112,7 +114,6 @@ int main(int argc, char** argv) {
         file >> mseg_ent >> burst >> ios;
         Entradas.push(Processo(i,mseg_ent,burst,ios));
     }
-
     while(!Entradas.empty() || !RR.empty() || !FCFS.empty() || !IO.empty()) {
         
         runtime++;
@@ -182,7 +183,7 @@ int main(int argc, char** argv) {
             }
         }
 
-        log(RR, FCFS, IO, runtime, "log.txt");
+        log(RR, FCFS, IO, runtime, "log.txt", Entradas.empty() && RR.empty() && FCFS.empty() && IO.empty());
     }
     
     int nower = hist[0];
