@@ -38,18 +38,23 @@ da fila Q0 no instante 0:
 - O programa deve gerar como saída uma descrição
 do diagrama de Gantt resultante.
 
-## SOLUÇÃO
+## DETALHES DA SOLUÇÃO
 
 Será passado ao programa um arquivo contendo o input do usuário. Este input consiste nos seguintes números:
 
 - número de processos
-- tempo (em ms)
+- tempo de entrada(em ms)
 - burst CPU de cada processo
 - número de operações I/O de cada processo
 
 Exemplo:
 
-```
+``` txt
 2
-
+0 2 3
+1 23 8
 ```
+
+Neste exemplo, temos dois processos: P0, com tempo de entrada 0ms, burst de CPU de 2ms e 3 operações de I/O, enquanto P1 possui tempo de entrada de 1ms, burst de 23ms e 8 operações de I/O
+
+O logging completo por milissegundo é registrado no arquivo log.txt, enquanto no terminal será printado o sumário.
