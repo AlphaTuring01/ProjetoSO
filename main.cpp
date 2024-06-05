@@ -74,7 +74,7 @@ void operator>>(priority_queue<Processo> &F1, queue<Processo> &F2) {
 
 void log(queue<Processo> q0, queue<Processo> q1, queue<Processo> io, int timestamp, string logfilename, bool empty) {
     ofstream log(logfilename, ios::app);
-    if(timestamp == 0)  log << "Lista de Logs:\n\n===================\n\n";
+    if(timestamp == 0)  log << "Log:\n\n===================\n\n";
     log << "timestamp: " << timestamp + 1<< "\n";
     log << "Q0: ";
     while(!q0.empty()) { log << "P" << q0.front().pegarID() - 1 << " "; q0.pop(); }
