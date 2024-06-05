@@ -98,6 +98,9 @@ int main(int argc, char** argv) {
     int runtime = -1;
     bool execFCFS;
     bool nowFCFS;
+
+    ofstream logging("log.txt", ios::out);
+    logging.close();
     
     if(argc==0) throw runtime_error("Nenhum arquivo de entrada passado!!");
     ifstream file(argv[1], ios::in);
