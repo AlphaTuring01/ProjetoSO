@@ -7,7 +7,7 @@ Projeto de Sistemas Operacionais realizado em grupo no Instituto Militar de Enge
 - Fabricio Asfora Romero Assunção
 - Johannes Elias Joseph Salomão
 - Williams Bruce Gonzaga
-- Roosevelth Soares
+- Roosevelth Reis Coelho Soares
 - Léo Victor Cruz Vasconcelos
 
 ## DESCRIÇÃO
