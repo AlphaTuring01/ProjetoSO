@@ -76,9 +76,9 @@ void log(queue<Processo> q0, queue<Processo> q1, queue<Processo> io, int timesta
     ofstream log(logfilename, ios::app);
     if(timestamp == 0)  log << "Lista de Logs:\n\n===================\n\n";
     log << "timestamp: " << timestamp + 1<< "\n";
-    log << "RR: ";
+    log << "Q0: ";
     while(!q0.empty()) { log << "P" << q0.front().pegarID() - 1 << " "; q0.pop(); }
-    log << "\nFCFS: ";
+    log << "\nQ1: ";
     while(!q1.empty()) { log << "P" << q1.front().pegarID() - 1 << " "; q1.pop(); }
     log << "\nIO: ";
     while(!io.empty()) { log << "P" << io.front().pegarID() - 1 << " "; io.pop(); }

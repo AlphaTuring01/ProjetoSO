@@ -3,617 +3,617 @@ Lista de Logs:
 ===================
 
 timestamp: 1
-RR: P0 P1 
-FCFS: 
+Q0: P0 P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 2
-RR: P0 P1 
-FCFS: 
+Q0: P0 P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 3
-RR: P0 P1 
-FCFS: 
+Q0: P0 P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 4
-RR: P0 P1 
-FCFS: 
+Q0: P0 P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 5
-RR: P0 P1 
-FCFS: 
+Q0: P0 P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 6
-RR: P0 P1 
-FCFS: 
+Q0: P0 P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 7
-RR: P0 P1 
-FCFS: 
+Q0: P0 P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 8
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 9
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 10
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 11
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 12
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 13
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 14
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 15
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 16
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 17
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: P0 
 
 ===================
 
 timestamp: 18
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 19
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 20
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 21
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 22
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 23
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 24
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 25
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 26
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 27
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P0 P1 
 
 ===================
 
 timestamp: 28
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 29
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 30
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 31
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 32
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 33
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 34
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 35
-RR: P0 
-FCFS: 
+Q0: P0 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 36
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 37
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 38
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 39
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 40
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 41
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 42
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 43
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 44
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 45
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 46
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 47
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 48
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 49
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 50
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 51
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 52
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 53
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 54
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 55
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 56
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 57
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 58
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 59
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 60
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 61
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 62
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 63
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 64
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 65
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 66
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 67
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 68
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 69
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 70
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 71
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 72
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 73
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 74
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 75
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 76
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 77
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: P1 
 
 ===================
 
 timestamp: 78
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 79
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 80
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 81
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 82
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 83
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 84
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 85
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 86
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 87
-RR: P1 
-FCFS: 
+Q0: P1 
+Q1: 
 IO: 
 
 ===================
 
 timestamp: 88
-RR: 
-FCFS: 
+Q0: 
+Q1: 
 IO: 
 
 ===================
