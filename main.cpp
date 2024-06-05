@@ -81,7 +81,7 @@ void log(queue<Processo> q0, queue<Processo> q1, queue<Processo> io, int timesta
     while(!q1.empty()) { log << q1.front().pegarID() - 1 << " "; q1.pop(); }
     log << "\nIO: ";
     while(!io.empty()) { log << io.front().pegarID() - 1 << " "; io.pop(); }
-    log << "\n========================================\n";
+    log << "\n\n========================================\n\n";
     log.close();
 }
 
@@ -185,14 +185,18 @@ int main(int argc, char** argv) {
         log(RR, FCFS, IO, runtime, "log.txt");
     }
     
-    int nower = -1;
-
-    cout << "\nSummary: \n\n";
+    int nower = hist[0];
+    int prevTime = 0;
+    cout << "\nSumario: \n\n";
     for(int i=0;i<hist.size();i++) {
         if(nower != hist[i])
-            cout << "beginning at timestamp " << i << ", process in CPU: " << (((nower = hist[i]) - 1 >= 0) ? (string("P") + to_string(nower - 1)) : "None (All in IO)") << endl;
+        {
+            cout << "De " << prevTime << " ate " << i << ", processo na CPU: " << ((hist[i-1] - 1 >= 0) ? (string("P") + to_string(hist[i-1]-1)) : "None (All in IO)") << endl;
+            nower = hist[i];
+            prevTime=i;
+        }
     }
-    cout << "Processes finished at time " << hist.size() << endl;
+    cout << "De " << prevTime << " ate " << hist.size() << ", processo na CPU: " << ((hist[hist.size()-1] - 1 >= 0) ? (string("P") + to_string(hist[hist.size()-1]-1)) : "None (All in IO)") << endl;
 
     return 0;
 }
